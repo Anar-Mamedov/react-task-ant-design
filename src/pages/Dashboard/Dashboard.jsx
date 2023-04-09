@@ -2,14 +2,11 @@ import { Outlet, useNavigate } from "react-router-dom";
 import React from "react";
 
 import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
+  CheckSquareOutlined,
+  CreditCardOutlined,
+  FileTextOutlined,
+  HomeOutlined,
+  PlusSquareOutlined,
 } from "@ant-design/icons";
 
 import { Layout, Menu } from "antd";
@@ -24,14 +21,32 @@ export default function Dashboard() {
   const items = [
     {
       key: "1",
-      icon: <UserOutlined />,
-      label: "Muqavileler",
+      icon: <HomeOutlined />,
+      label: "Əsas Səhifə",
       onClick: () => navigate("/contracts"),
     },
     {
       key: "2",
-      icon: <VideoCameraOutlined />,
-      label: "nav 2",
+      icon: <CheckSquareOutlined />,
+      label: "Təşkilat",
+      onClick: () => navigate("/"),
+    },
+    {
+      key: "3",
+      icon: <CreditCardOutlined />,
+      label: "Əməkhaqqı",
+      onClick: () => navigate("/"),
+    },
+    {
+      key: "4",
+      icon: <FileTextOutlined />,
+      label: "Satınalma",
+      onClick: () => navigate("/"),
+    },
+    {
+      key: "5",
+      icon: <PlusSquareOutlined />,
+      label: "Mühasibat uçotu",
       onClick: () => navigate("/"),
     },
   ];
@@ -46,23 +61,22 @@ export default function Dashboard() {
           left: 0,
           top: 0,
           bottom: 0,
+          backgroundColor: "#fff",
         }}
       >
         <div
           style={{
             height: 32,
             margin: 16,
-            background: "rgba(255, 255, 255, 0.2)",
+            background: "rgba(189, 0, 0, 0.2)",
           }}
         />
-        <p>deeme</p>
         <Menu
-          theme="dark"
+          theme="light"
           mode="inline"
           defaultSelectedKeys={["4"]}
           items={items}
         />
-        <p>deneme 2</p>
       </Sider>
 
       <Layout
