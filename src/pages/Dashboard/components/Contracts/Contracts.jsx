@@ -2,6 +2,7 @@ import React from "react";
 import { Layout, theme } from "antd";
 import Table from "./components/Table/Table";
 import Breadcumb from "./components/Breadcumb";
+import ToolBar from "../Toolbar/ToolBar";
 
 const { Content } = Layout;
 
@@ -25,6 +26,7 @@ export default function Contracts() {
         }}
       >
         <Breadcumb />
+        <ToolBar />
         <Table />
         {/* <p>long content</p>
         {
