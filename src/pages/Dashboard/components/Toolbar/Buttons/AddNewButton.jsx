@@ -42,7 +42,7 @@ export default function AddNewButton() {
         size={size}
         onClose={onClose}
         open={open}
-        width={"80%"}
+        width={"950px"}
         extra={
           <Space
             style={{
@@ -68,9 +68,6 @@ export default function AddNewButton() {
         }
       >
         <MainInformation />
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
       </StyledDrawer>
     </>
   );
