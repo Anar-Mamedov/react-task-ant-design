@@ -816,7 +816,7 @@ export default function MainInformation() {
                     alignItems: "flex-start",
                   }}
                 >
-                  <span>Bank zəmanət məbləği:</span>
+                  <span>Məhsul:</span>
                   <Select
                     required
                     showSearch
@@ -856,7 +856,7 @@ export default function MainInformation() {
                     alignItems: "flex-start",
                   }}
                 >
-                  <span>Bank zəmanət məbləği:</span>
+                  <span>Təsnifatı:</span>
                   <Select
                     required
                     showSearch
@@ -896,7 +896,7 @@ export default function MainInformation() {
                     alignItems: "flex-start",
                   }}
                 >
-                  <span>Bank zəmanət məbləği:</span>
+                  <span>Ölçü vahidi:</span>
                   <Select
                     required
                     showSearch
@@ -1051,7 +1051,7 @@ export default function MainInformation() {
                 </Space>
               </div>
             </TabPane>
-            <TabPane tab="Çattırılma" key="4">
+            <TabPane tab="Çatdırılma" key="4">
               <div
                 style={{
                   display: "flex",
@@ -1066,91 +1066,7 @@ export default function MainInformation() {
                     alignItems: "flex-start",
                   }}
                 >
-                  <span>Məbləğ:</span>
-                  <InputNumber
-                    type="number"
-                    style={{
-                      width: 160,
-                      marginTop: "0.5rem",
-                    }}
-                    placeholder="Daxil edin"
-                  />
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <span
-                    style={{
-                      display: "flex",
-                      gap: "6.9rem",
-                    }}
-                  >
-                    ƏDV: <Checkbox onChangeCheckbox={onChangeCheckbox} />
-                  </span>
-                  <Space style={{ marginTop: "0.5rem" }}>
-                    <Space.Compact>
-                      <Select
-                        showSearch
-                        style={{
-                          width: 80,
-                        }}
-                        placeholder="Seçim edin"
-                        optionFilterProp="children"
-                        onChange={onChange}
-                        onSearch={onSearch}
-                        filterOption={(input, option) =>
-                          (option?.label ?? "")
-                            .toLowerCase()
-                            .includes(input.toLowerCase())
-                        }
-                        options={[
-                          {
-                            value: "AZN",
-                            label: "AZN",
-                          },
-                          {
-                            value: "USD",
-                            label: "USD",
-                          },
-                          {
-                            value: "EUR",
-                            label: "EUR",
-                          },
-                        ]}
-                      />
-                      <Input defaultValue="" style={{ width: 80 }} />
-                    </Space.Compact>
-                  </Space>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <span>Bank zəmanət məbləği:</span>
-                  <InputNumber
-                    type="number"
-                    style={{
-                      width: 160,
-                      marginTop: "0.5rem",
-                    }}
-                    placeholder="Daxil edin"
-                  />
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <span>Bank zəmanət məbləği:</span>
+                  <span>Şərt:</span>
                   <Select
                     required
                     showSearch
@@ -1190,7 +1106,7 @@ export default function MainInformation() {
                     alignItems: "flex-start",
                   }}
                 >
-                  <span>Bank zəmanət tarixi:</span>
+                  <span>Tarix:</span>
                   <Space
                     direction="vertical"
                     style={{
@@ -1200,7 +1116,7 @@ export default function MainInformation() {
                     <DatePicker
                       required
                       onChangeData={onChangeData}
-                      placeholder="Tarix seç"
+                      placeholder="Seçim edin"
                       style={{ width: 160 }}
                     />
                   </Space>
@@ -1212,7 +1128,7 @@ export default function MainInformation() {
                     alignItems: "flex-start",
                   }}
                 >
-                  <span>Bank zəmanət müddəti:</span>
+                  <span>Müddət:</span>
                   <Space style={{ marginTop: "0.5rem" }}>
                     <Space.Compact>
                       <Select
