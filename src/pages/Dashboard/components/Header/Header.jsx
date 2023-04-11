@@ -88,7 +88,11 @@ export default function Header() {
           options={[
             {
               value: "Azerbaijan",
-              label: "Azerbaijan",
+              label: (
+                <>
+                  <strong>icon</strong> Azerbaijan
+                </>
+              ),
             },
             {
               value: "English",

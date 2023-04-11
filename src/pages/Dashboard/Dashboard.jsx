@@ -23,7 +23,7 @@ export default function Dashboard() {
       key: "1",
       icon: <HomeOutlined />,
       label: "Əsas Səhifə",
-      onClick: () => navigate("/contracts"),
+      onClick: () => navigate("/"),
     },
     {
       key: "2",
@@ -41,13 +41,53 @@ export default function Dashboard() {
       key: "4",
       icon: <FileTextOutlined />,
       label: "Satınalma",
-      onClick: () => navigate("/"),
+      onClick: () => navigate("/contracts"),
+      children: [
+        {
+          key: "7",
+          icon: <CheckSquareOutlined />,
+          label: "Kontragent",
+          onClick: () => navigate("/"),
+        },
+        {
+          key: "6",
+          icon: <CheckSquareOutlined />,
+          label: "Müqavilə",
+          onClick: () => navigate("/"),
+        },
+        {
+          key: "8",
+          icon: <CheckSquareOutlined />,
+          label: "Alış",
+          onClick: () => navigate("/"),
+        },
+        {
+          key: "9",
+          icon: <CheckSquareOutlined />,
+          label: "MİF",
+          onClick: () => navigate("/"),
+        },
+        {
+          key: "10",
+          icon: <CheckSquareOutlined />,
+          label: "Öhdəlik",
+          onClick: () => navigate("/"),
+        },
+      ],
     },
     {
       key: "5",
       icon: <PlusSquareOutlined />,
       label: "Mühasibat uçotu",
       onClick: () => navigate("/"),
+      children: [
+        {
+          key: "11",
+          icon: <CheckSquareOutlined />,
+          label: "Mühasibat uçotu",
+          onClick: () => navigate("/"),
+        },
+      ],
     },
   ];
 
