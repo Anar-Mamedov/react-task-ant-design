@@ -3,10 +3,7 @@ import {
   Layout,
   theme,
   Button,
-  Space,
-  Tooltip,
   Divider,
-  Input,
   Select,
   Avatar,
   Badge,
@@ -16,18 +13,15 @@ import {
   CalendarOutlined,
   CheckSquareOutlined,
   MailOutlined,
-  SearchOutlined,
   StarOutlined,
   WechatOutlined,
-  AudioOutlined,
-  ClockCircleOutlined,
   BellOutlined,
   ShoppingCartOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import Search from "antd/es/transfer/search";
 
-const { Text, Link } = Typography;
+const { Text } = Typography;
 
 const onSearch = (value) => console.log(value);
 
@@ -82,7 +76,7 @@ export default function Header() {
         <Select
           defaultValue="lucy"
           style={{
-            width: 120,
+            width: 200,
           }}
           onChange={handleChange}
           options={[
