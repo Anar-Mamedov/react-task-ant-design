@@ -250,6 +250,7 @@ export default function Header() {
           ]}
         />
         <Button
+          href=""
           shape="circle"
           style={{
             backgroundColor: "transparent",
@@ -263,6 +264,7 @@ export default function Header() {
           </Badge>
         </Button>
         <Button
+          href=""
           shape="circle"
           style={{
             backgroundColor: "transparent",
