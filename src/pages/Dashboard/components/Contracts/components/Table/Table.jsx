@@ -1,5 +1,8 @@
-import { Table as AntdTable, Tag, Drawer } from "antd";
+import { Table as AntdTable, Tag, Drawer, Typography, Space } from "antd";
 import { useState } from "react";
+import ContractTabs from "../../../Toolbar/Contract/Components/ContractTabs";
+
+const { Text } = Typography;
 
 const getColor = (status) => {
   switch (status) {
@@ -118,17 +121,84 @@ export default function Table() {
         })}
       />
       <Drawer // render Drawer component
-        title="Boş bir drawer" // set title prop
+        title="Müqavilə" // set title prop
         placement="right" // set placement prop
         closable={true} // set closable prop
         onClose={onDrawerClose} // pass onClose handler
         visible={drawerVisible} // pass visible prop
-        width={400} // set width prop
+        width={800} // set width prop
       >
         {selectedRow && ( // render selected row data if any
           <div>
-            <p>Nömrə: {selectedRow.number}</p>
-            <p>Status: {selectedRow.status}</p>
+            <Space
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Text type="success">Əsas məlumatlar:</Text>
+              <p>
+                <Text type="secondary">Status:</Text>{" "}
+                <span
+                  style={{
+                    backgroundColor: `rgba(${
+                      getColor(selectedRow.status) === "grey"
+                        ? "128,128,128"
+                        : getColor(selectedRow.status) === "green"
+                        ? "0,128,0"
+                        : getColor(selectedRow.status) === "red"
+                        ? "255,0,0"
+                        : getColor(selectedRow.status) === "orange"
+                        ? "255,165,0"
+                        : "128,128,128"
+                    }, 0.5)`,
+                    padding: "5px 10px",
+                    borderRadius: "20px",
+                  }}
+                >
+                  {selectedRow.status}{" "}
+                </span>
+              </p>
+            </Space>
+            <Space
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                rowGap: "0px",
+                columnGap: "25px",
+                marginBottom: "20px",
+              }}
+            >
+              <p>
+                <Text type="secondary">Təşkilat:</Text> {selectedRow.number}
+              </p>
+              <p>
+                <Text type="secondary">Kontragent:</Text> {selectedRow.number}
+              </p>
+              <p>
+                <Text type="secondary">Növ:</Text> {selectedRow.number}
+              </p>
+              <p>
+                <Text type="secondary">Nömrə:</Text> {selectedRow.number}
+              </p>
+              <p>
+                <Text type="secondary">Tarix:</Text> {selectedRow.number}
+              </p>
+              <p>
+                <Text type="secondary">Predmet:</Text> {selectedRow.number}
+              </p>
+              <p>
+                <Text type="secondary">Ödəniş növü:</Text> {selectedRow.number}
+              </p>
+              <p>
+                <Text type="secondary">Başlama tarixi:</Text>{" "}
+                {selectedRow.number}
+              </p>
+              <p>
+                <Text type="secondary">Bitmə tarixi:</Text> {selectedRow.number}
+              </p>
+            </Space>
+            <ContractTabs />
           </div>
         )}
       </Drawer>

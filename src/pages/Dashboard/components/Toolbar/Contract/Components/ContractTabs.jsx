@@ -1,101 +1,104 @@
-import { Table as AntdTable, Tag } from "antd";
-import { useState } from "react";
+import { Space, Tabs } from "antd";
+import React from "react";
+import styled from "styled-components";
+import FinancialDetailsTable from "./FinancialDetailsTable";
+import RequisiteTable from "./RequisiteTable";
+import DetailsTable from "./DetailsTable";
+import DeliveryTable from "./DeliveryTable";
 
-const getColor = (status) => {
-  switch (status) {
-    case "Qaralama":
-      return "grey";
-    case "Təsdiqləndi":
-      return "green";
-    case "Ləğv edildi":
-      return "red";
-    case "Gözləmədə":
-      return "orange";
-    default:
-      return "grey";
+//styled components
+const StyledTabs = styled(Tabs)`
+  .ant-tabs-tab {
+    width: 165px;
+    justify-content: center;
   }
-};
+  .ant-tabs-tab-active {
+    background-color: #2bc77135;
+    color: rgba(0, 0, 0, 0.88);
+  }
+  .ant-tabs-tab-btn {
+    color: rgba(0, 0, 0, 0.88) !important;
+  }
+  .ant-tabs-ink-bar {
+    background-color: #2bc770;
+  }
+`;
 
-const columns = [
-  {
-    title: "#",
-    dataIndex: "key",
-    sorter: (a, b) => a.key - b.key,
-    width: 70,
-  },
-  {
-    title: "Nömrə",
-    dataIndex: "number",
-    sorter: (a, b) => a.number - b.number,
-  },
-  {
-    title: "Status",
-    dataIndex: "status",
-    sorter: (a, b) => a.status.localeCompare(b.status),
-    render: (_, { status }) => <Tag color={getColor(status)}>{status}</Tag>,
-  },
-];
+//styled components end
+
+// tab
+const { TabPane } = Tabs;
+
+// Tab end
 
 export default function ContractTabs() {
-  const [data] = useState([
-    {
-      key: 1,
-      number: 1000,
-      status: "Qaralama",
-    },
-    {
-      key: 2,
-      number: 2000,
-      status: "Qaralama",
-    },
-    {
-      key: 3,
-      number: 3000,
-      status: "Təsdiqləndi",
-    },
-    {
-      key: 4,
-      number: 4000,
-      status: "Təsdiqləndi",
-    },
-    {
-      key: 5,
-      number: 5000,
-      status: "Ləğv edildi",
-    },
-    {
-      key: 6,
-      number: 6000,
-      status: "Ləğv edildi",
-    },
-    {
-      key: 7,
-      number: 7000,
-      status: "Gözləmədə",
-    },
-    {
-      key: 8,
-      number: 8000,
-      status: "Gözləmədə",
-    },
-  ]);
-
-  const onChange = (pagination, filters, sorter, extra) => {
-    console.log("params", pagination, filters, sorter, extra);
-  };
-
   return (
-    <AntdTable
-      size="small"
-      pagination={false}
-      columns={columns}
-      onChange={onChange}
-      dataSource={data}
-      rowSelection={true}
-      scroll={{
-        x: "100vw",
-        y: 500,
+    <Space
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
       }}
-    />
+    >
+      <div
+        style={{
+          marginTop: "2rem",
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          gap: 15,
+        }}
+      >
+        {/* tab */}
+
+        <StyledTabs>
+          <TabPane tab="Maliyyə detalları" key="1">
+            <div
+              style={{
+                display: "flex",
+                flexFlow: "row wrap",
+                gap: "15px",
+              }}
+            >
+              <FinancialDetailsTable />
+            </div>
+          </TabPane>
+          <TabPane tab="Rekvizit" key="2">
+            <div
+              style={{
+                display: "flex",
+                flexFlow: "row wrap",
+                gap: "15px",
+              }}
+            >
+              <RequisiteTable />
+            </div>
+          </TabPane>
+          <TabPane tab="Detallar" key="3">
+            <div
+              style={{
+                display: "flex",
+                flexFlow: "row wrap",
+                gap: "15px",
+              }}
+            >
+              <DetailsTable />
+            </div>
+          </TabPane>
+          <TabPane tab="Çatdırılma" key="4">
+            <div
+              style={{
+                display: "flex",
+                flexFlow: "row wrap",
+                gap: "15px",
+              }}
+            >
+              <DeliveryTable />
+            </div>
+          </TabPane>
+        </StyledTabs>
+        {/* <Tabs defaultActiveKey="1" items={items} onChangeTab={onChangeTab} /> */}
+      </div>
+    </Space>
   );
 }
