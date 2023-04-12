@@ -15,6 +15,8 @@ import Footer from "./components/Footer/Footer";
 
 const { Sider } = Layout;
 
+const logo = require("../../logo.png");
+
 export default function Dashboard() {
   const navigate = useNavigate();
 
@@ -106,9 +108,13 @@ export default function Dashboard() {
       >
         <div
           style={{
+            backgroundImage: `url(${logo})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            backgroundRepeat: "no-repeat",
             height: 32,
             margin: 16,
-            background: "rgba(189, 0, 0, 0.2)",
+            // background: "rgba(0, 0, 0, 0.2)",
           }}
         />
         <Menu
