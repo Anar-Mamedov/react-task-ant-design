@@ -37,7 +37,7 @@ const columns = [
 ];
 
 export default function Table() {
-  const [data, setData] = useState([
+  const [data] = useState([
     {
       key: 1,
       number: 1000,
