@@ -1,6 +1,14 @@
 ## link for you to see and use the project
 
+### select Satınalma -> Müqavilə from the menu on the left
+
 https://master--fabulous-croissant-ee25b5.netlify.app/
+
+---
+
+![Alt text](https://github.com/Anar-Mamedov/react-task-ant-design/blob/master/1.jpg)
+
+---
 
 # Getting Started with Create React App and Redux
 

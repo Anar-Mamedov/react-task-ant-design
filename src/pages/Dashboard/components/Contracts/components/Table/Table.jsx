@@ -1,4 +1,4 @@
-import { Table as AntdTable, Tag } from "antd";
+import { Table as AntdTable, Tag, Drawer } from "antd";
 import { useState } from "react";
 
 const getColor = (status) => {
@@ -80,22 +80,58 @@ export default function Table() {
     },
   ]);
 
+  const [drawerVisible, setDrawerVisible] = useState(false); // state for controlling drawer visibility
+  const [selectedRow, setSelectedRow] = useState(null); // state for storing selected row data
+
   const onChange = (pagination, filters, sorter, extra) => {
     console.log("params", pagination, filters, sorter, extra);
   };
 
+  const onRowClick = (record) => {
+    // handler for row click
+    setDrawerVisible(true); // open drawer
+    setSelectedRow(record); // store selected row data
+  };
+
+  const onDrawerClose = () => {
+    // handler for drawer close
+    setDrawerVisible(false); // close drawer
+    setSelectedRow(null); // clear selected row data
+  };
+
   return (
-    <AntdTable
-      size="small"
-      pagination={false}
-      columns={columns}
-      onChange={onChange}
-      dataSource={data}
-      rowSelection={true}
-      scroll={{
-        x: "100vw",
-        y: 500,
-      }}
-    />
+    <>
+      <AntdTable
+        size="small"
+        pagination={false}
+        columns={columns}
+        onChange={onChange}
+        dataSource={data}
+        rowSelection={true}
+        scroll={{
+          x: "100vw",
+          y: 500,
+        }}
+        onRow={(record) => ({
+          // pass onRow prop to Table
+          onClick: () => onRowClick(record), // call onRowClick handler with record
+        })}
+      />
+      <Drawer // render Drawer component
+        title="Boş bir drawer" // set title prop
+        placement="right" // set placement prop
+        closable={true} // set closable prop
+        onClose={onDrawerClose} // pass onClose handler
+        visible={drawerVisible} // pass visible prop
+        width={400} // set width prop
+      >
+        {selectedRow && ( // render selected row data if any
+          <div>
+            <p>Nömrə: {selectedRow.number}</p>
+            <p>Status: {selectedRow.status}</p>
+          </div>
+        )}
+      </Drawer>
+    </>
   );
 }
