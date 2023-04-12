@@ -1,5 +1,4 @@
-import { DownOutlined } from "@ant-design/icons";
-import { Form, Radio, Space, Switch, Table as AntdTable, Tag } from "antd";
+import { Table as AntdTable, Tag } from "antd";
 import { useState } from "react";
 
 const getColor = (status) => {
