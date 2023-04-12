@@ -1,6 +1,6 @@
 ## link for you to see and use the project
 
-https://master--fabulous-croissant-ee25b5.netlify.app/contracts
+https://master--fabulous-croissant-ee25b5.netlify.app/
 
 # Getting Started with Create React App and Redux
 
