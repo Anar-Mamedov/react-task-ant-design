@@ -249,24 +249,32 @@ export default function Header() {
             },
           ]}
         />
-        <Badge size="small" count={5} style={{ backgroundColor: "#52c41a" }}>
-          <ShoppingCartOutlined
-            style={{
-              fontSize: "20px",
-            }}
-            shape="square"
-            size="large"
-          />
-        </Badge>
-        <Badge size="small" count={5}>
-          <BellOutlined
-            style={{
-              fontSize: "20px",
-            }}
-            shape="square"
-            size="large"
-          />
-        </Badge>
+        <Button
+          shape="circle"
+          style={{
+            backgroundColor: "transparent",
+            border: "none",
+            boxShadow: "none",
+            marginRight: "5px",
+          }}
+        >
+          <Badge count={5} style={{ backgroundColor: "#52c41a" }}>
+            <ShoppingCartOutlined style={{ fontSize: "24px" }} />
+          </Badge>
+        </Button>
+        <Button
+          shape="circle"
+          style={{
+            backgroundColor: "transparent",
+            border: "none",
+            boxShadow: "none",
+            marginRight: "5px",
+          }}
+        >
+          <Badge count={5}>
+            <BellOutlined style={{ fontSize: "24px" }} />
+          </Badge>
+        </Button>
         <div
           style={{
             display: "flex",
