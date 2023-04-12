@@ -40,65 +40,59 @@ export default function ContractTabs() {
         alignItems: "flex-start",
       }}
     >
-      <div
+      {/* tab */}
+
+      <StyledTabs
         style={{
-          marginTop: "2rem",
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          gap: 15,
+          width: "770px",
         }}
       >
-        {/* tab */}
-
-        <StyledTabs>
-          <TabPane tab="Maliyyə detalları" key="1">
-            <div
-              style={{
-                display: "flex",
-                flexFlow: "row wrap",
-                gap: "15px",
-              }}
-            >
-              <FinancialDetailsTable />
-            </div>
-          </TabPane>
-          <TabPane tab="Rekvizit" key="2">
-            <div
-              style={{
-                display: "flex",
-                flexFlow: "row wrap",
-                gap: "15px",
-              }}
-            >
-              <RequisiteTable />
-            </div>
-          </TabPane>
-          <TabPane tab="Detallar" key="3">
-            <div
-              style={{
-                display: "flex",
-                flexFlow: "row wrap",
-                gap: "15px",
-              }}
-            >
-              <DetailsTable />
-            </div>
-          </TabPane>
-          <TabPane tab="Çatdırılma" key="4">
-            <div
-              style={{
-                display: "flex",
-                flexFlow: "row wrap",
-                gap: "15px",
-              }}
-            >
-              <DeliveryTable />
-            </div>
-          </TabPane>
-        </StyledTabs>
-        {/* <Tabs defaultActiveKey="1" items={items} onChangeTab={onChangeTab} /> */}
-      </div>
+        <TabPane tab="Maliyyə detalları" key="1">
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "row wrap",
+              gap: "15px",
+            }}
+          >
+            <FinancialDetailsTable />
+          </div>
+        </TabPane>
+        <TabPane tab="Rekvizit" key="2">
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "row wrap",
+              gap: "15px",
+            }}
+          >
+            <RequisiteTable />
+          </div>
+        </TabPane>
+        <TabPane tab="Detallar" key="3">
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "row wrap",
+              gap: "15px",
+            }}
+          >
+            <DetailsTable />
+          </div>
+        </TabPane>
+        <TabPane tab="Çatdırılma" key="4">
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "row wrap",
+              gap: "15px",
+            }}
+          >
+            <DeliveryTable />
+          </div>
+        </TabPane>
+      </StyledTabs>
+      {/* <Tabs defaultActiveKey="1" items={items} onChangeTab={onChangeTab} /> */}
     </Space>
   );
 }
