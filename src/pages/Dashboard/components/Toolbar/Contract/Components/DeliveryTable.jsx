@@ -1,20 +1,5 @@
-import { Table as AntdTable, Tag } from "antd";
+import { Table as AntdTable } from "antd";
 import { useState } from "react";
-
-const getColor = (status) => {
-  switch (status) {
-    case "Qaralama":
-      return "grey";
-    case "Təsdiqləndi":
-      return "green";
-    case "Ləğv edildi":
-      return "red";
-    case "Gözləmədə":
-      return "orange";
-    default:
-      return "grey";
-  }
-};
 
 const columns = [
   {
@@ -24,15 +9,19 @@ const columns = [
     width: 70,
   },
   {
-    title: "Nömrə",
-    dataIndex: "number",
-    sorter: (a, b) => a.number - b.number,
+    title: "Şərt",
+    dataIndex: "condition",
+    sorter: (a, b) => a.condition.localeCompare(b.condition),
   },
   {
-    title: "Status",
-    dataIndex: "status",
-    sorter: (a, b) => a.status.localeCompare(b.status),
-    render: (_, { status }) => <Tag color={getColor(status)}>{status}</Tag>,
+    title: "Tarix",
+    dataIndex: "date",
+    sorter: (a, b) => new Date(a.date) - new Date(b.date),
+  },
+  {
+    title: "Müddət",
+    dataIndex: "duration",
+    sorter: (a, b) => a.duration - b.duration,
   },
 ];
 
@@ -40,43 +29,21 @@ export default function DeliveryTable() {
   const [data] = useState([
     {
       key: 1,
-      number: 1000,
-      status: "Qaralama",
+      condition: "Lorem ipsum",
+      date: "11.11.2023",
+      duration: 1000,
     },
     {
       key: 2,
-      number: 2000,
-      status: "Qaralama",
+      condition: "Lorem ipsum",
+      date: "11.11.2021",
+      duration: 2000,
     },
     {
       key: 3,
-      number: 3000,
-      status: "Təsdiqləndi",
-    },
-    {
-      key: 4,
-      number: 4000,
-      status: "Təsdiqləndi",
-    },
-    {
-      key: 5,
-      number: 5000,
-      status: "Ləğv edildi",
-    },
-    {
-      key: 6,
-      number: 6000,
-      status: "Ləğv edildi",
-    },
-    {
-      key: 7,
-      number: 7000,
-      status: "Gözləmədə",
-    },
-    {
-      key: 8,
-      number: 8000,
-      status: "Gözləmədə",
+      condition: "Lorem ipsum",
+      date: "11.11.2022",
+      duration: 3000,
     },
   ]);
 
