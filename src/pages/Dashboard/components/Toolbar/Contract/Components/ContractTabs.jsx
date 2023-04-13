@@ -9,7 +9,7 @@ import DeliveryTable from "./DeliveryTable";
 //styled components
 const StyledTabs = styled(Tabs)`
   .ant-tabs-tab {
-    width: 165px;
+    width: 189px;
     justify-content: center;
   }
   .ant-tabs-tab-active {
@@ -44,7 +44,7 @@ export default function ContractTabs() {
 
       <StyledTabs
         style={{
-          width: "770px",
+          width: "855px",
         }}
       >
         <TabPane tab="Maliyyə detalları" key="1">

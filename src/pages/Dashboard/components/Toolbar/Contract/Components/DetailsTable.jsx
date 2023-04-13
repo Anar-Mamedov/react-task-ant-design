@@ -53,31 +53,6 @@ export default function DetailsTable() {
       number: 3000,
       status: "Təsdiqləndi",
     },
-    {
-      key: 4,
-      number: 4000,
-      status: "Təsdiqləndi",
-    },
-    {
-      key: 5,
-      number: 5000,
-      status: "Ləğv edildi",
-    },
-    {
-      key: 6,
-      number: 6000,
-      status: "Ləğv edildi",
-    },
-    {
-      key: 7,
-      number: 7000,
-      status: "Gözləmədə",
-    },
-    {
-      key: 8,
-      number: 8000,
-      status: "Gözləmədə",
-    },
   ]);
 
   const onChange = (pagination, filters, sorter, extra) => {
