@@ -1,5 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import React from "react";
+import styled from "styled-components";
 
 import {
   CheckSquareOutlined,
@@ -16,6 +17,23 @@ import Footer from "./components/Footer/Footer";
 const { Sider } = Layout;
 
 const logo = require("../../logo.png");
+
+// styled-components
+
+const CustomMenu = styled(Menu)`
+  &.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #2bc770;
+    color: #fff;
+  }
+  .ant-menu-submenu-title {
+    color: #000 !important;
+  }
+  .ant-menu-inline {
+    background: #00000000 !important;
+  }
+`;
+
+// styled-components end
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -117,7 +135,7 @@ export default function Dashboard() {
             // background: "rgba(0, 0, 0, 0.2)",
           }}
         />
-        <Menu
+        <CustomMenu
           theme="light"
           mode="inline"
           defaultSelectedKeys={["4"]}
