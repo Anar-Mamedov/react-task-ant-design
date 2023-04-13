@@ -1,20 +1,5 @@
-import { Table as AntdTable, Tag } from "antd";
+import { Table as AntdTable } from "antd";
 import { useState } from "react";
-
-const getColor = (status) => {
-  switch (status) {
-    case "Qaralama":
-      return "grey";
-    case "Təsdiqləndi":
-      return "green";
-    case "Ləğv edildi":
-      return "red";
-    case "Gözləmədə":
-      return "orange";
-    default:
-      return "grey";
-  }
-};
 
 const columns = [
   {
@@ -24,15 +9,36 @@ const columns = [
     width: 70,
   },
   {
-    title: "Nömrə",
-    dataIndex: "number",
-    sorter: (a, b) => a.number - b.number,
+    title: "İmzalayan şəxs",
+    dataIndex: "signatory",
+    sorter: (a, b) => a.signatory.localeCompare(b.signatory),
   },
   {
-    title: "Status",
-    dataIndex: "status",
-    sorter: (a, b) => a.status.localeCompare(b.status),
-    render: (_, { status }) => <Tag color={getColor(status)}>{status}</Tag>,
+    title: "Təşkilatın imza tarixi",
+    dataIndex: "dateofcompanysigature",
+    sorter: (a, b) =>
+      new Date(a.dateofcompanysigature) - new Date(b.dateofcompanysigature),
+  },
+  {
+    title: "Müqavilənin imza tarixi",
+    dataIndex: "dateofcontractsigature",
+    sorter: (a, b) =>
+      new Date(a.dateofcontractsigature) - new Date(b.dateofcontractsigature),
+  },
+  {
+    title: "Elaqeli şəxs 1",
+    dataIndex: "person1",
+    sorter: (a, b) => a.person1.localeCompare(b.person1),
+  },
+  {
+    title: "Elaqeli şəxs 2",
+    dataIndex: "person2",
+    sorter: (a, b) => a.person2.localeCompare(b.person2),
+  },
+  {
+    title: "Qeyd",
+    dataIndex: "note",
+    sorter: (a, b) => a.note.localeCompare(b.note),
   },
 ];
 
@@ -40,43 +46,30 @@ export default function RequisiteTable() {
   const [data] = useState([
     {
       key: 1,
-      number: 1000,
-      status: "Qaralama",
+      signatory: "Vilayət Əmirli",
+      dateofcompanysigature: "11.11.2023",
+      dateofcontractsigature: "11.11.2023",
+      person1: "Vilayət Əmirli",
+      person2: "Kamil Əmirli",
+      note: "lorem ipsum",
     },
     {
       key: 2,
-      number: 2000,
-      status: "Qaralama",
+      signatory: "Anar Mamedov",
+      dateofcompanysigature: "11.11.2021",
+      dateofcontractsigature: "11.11.2021",
+      person1: "Anar Mamedov",
+      person2: "Akif Qasımov",
+      note: "lorem ipsum",
     },
     {
       key: 3,
-      number: 3000,
-      status: "Təsdiqləndi",
-    },
-    {
-      key: 4,
-      number: 4000,
-      status: "Təsdiqləndi",
-    },
-    {
-      key: 5,
-      number: 5000,
-      status: "Ləğv edildi",
-    },
-    {
-      key: 6,
-      number: 6000,
-      status: "Ləğv edildi",
-    },
-    {
-      key: 7,
-      number: 7000,
-      status: "Gözləmədə",
-    },
-    {
-      key: 8,
-      number: 8000,
-      status: "Gözləmədə",
+      signatory: "Babek Əliyev",
+      dateofcompanysigature: "11.11.2022",
+      dateofcontractsigature: "11.11.2022",
+      person1: "Babek Əliyev",
+      person2: "Qabil Camalov",
+      note: "lorem ipsum",
     },
   ]);
 

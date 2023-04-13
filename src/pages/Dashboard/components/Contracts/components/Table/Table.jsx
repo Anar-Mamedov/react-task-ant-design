@@ -27,15 +27,61 @@ const columns = [
     width: 70,
   },
   {
-    title: "Nömrə",
+    title: "NÖMRƏ",
     dataIndex: "number",
     sorter: (a, b) => a.number - b.number,
   },
   {
-    title: "Status",
+    title: "TƏŞKİLAT",
+    dataIndex: "company",
+    sorter: (a, b) => a.company.localeCompare(b.company),
+  },
+  {
+    title: "KONTRAGENT",
+    dataIndex: "counterparty",
+    sorter: (a, b) => a.counterparty.localeCompare(b.counterparty),
+  },
+  {
+    title: "NÖV",
+    dataIndex: "type",
+    sorter: (a, b) => a.type.localeCompare(b.type),
+  },
+  {
+    title: "TARİX",
+    dataIndex: "date",
+    sorter: (a, b) => new Date(a.date) - new Date(b.date),
+  },
+  {
+    title: "PREDMET",
+    dataIndex: "subject",
+    sorter: (a, b) => a.subject.localeCompare(b.subject),
+  },
+  {
+    title: "ÖDƏNİŞ NÖVÜ",
+    dataIndex: "payment",
+    sorter: (a, b) =>
+      parseFloat(a.payment.replace(",", ".")) -
+      parseFloat(b.payment.replace(",", ".")),
+  },
+  {
+    title: "STATUS",
     dataIndex: "status",
     sorter: (a, b) => a.status.localeCompare(b.status),
     render: (_, { status }) => <Tag color={getColor(status)}>{status}</Tag>,
+  },
+  {
+    title: "BAŞLAMA TARİXİ",
+    dataIndex: "startdate",
+    sorter: (a, b) => new Date(a.startdate) - new Date(b.startdate),
+  },
+  {
+    title: "BİTİŞ TARİXİ",
+    dataIndex: "enddate",
+    sorter: (a, b) => new Date(a.enddate) - new Date(b.enddate),
+  },
+  {
+    title: "DÜZƏLİŞ ET",
+    dataIndex: "edit",
   },
 ];
 
@@ -44,42 +90,114 @@ export default function Table() {
     {
       key: 1,
       number: 1000,
+      company: "AT-Geotech MMC",
+      counterparty: "Resource Planing QSC",
+      type: "Lorem ipsum",
+      date: "01.04.2023",
+      subject: "Lorem ipsum",
+      payment: "Lorem ipsum",
       status: "Qaralama",
+      startdate: "01.04.2023",
+      enddate: "01.04.2023",
+      edit: "Lorem ipsum",
     },
     {
       key: 2,
       number: 2000,
+      company: "AT-Geotech MMC",
+      counterparty: "Resource Planing QSC",
+      type: "Lorem ipsum",
+      date: "01.04.2023",
+      subject: "Lorem ipsum",
+      payment: "Lorem ipsum",
       status: "Qaralama",
+      startdate: "01.04.2023",
+      enddate: "01.04.2023",
+      edit: "Lorem ipsum",
     },
     {
       key: 3,
       number: 3000,
+      company: "AT-Geotech MMC",
+      counterparty: "Resource Planing QSC",
+      type: "Lorem ipsum",
+      date: "01.04.2023",
+      subject: "Lorem ipsum",
+      payment: "Lorem ipsum",
       status: "Təsdiqləndi",
+      startdate: "01.04.2023",
+      enddate: "01.04.2023",
+      edit: "Lorem ipsum",
     },
     {
       key: 4,
       number: 4000,
+      company: "AT-Geotech MMC",
+      counterparty: "Resource Planing QSC",
+      type: "Lorem ipsum",
+      date: "01.04.2023",
+      subject: "Lorem ipsum",
+      payment: "Lorem ipsum",
       status: "Təsdiqləndi",
+      startdate: "01.04.2023",
+      enddate: "01.04.2023",
+      edit: "Lorem ipsum",
     },
     {
       key: 5,
       number: 5000,
+      company: "AT-Geotech MMC",
+      counterparty: "Resource Planing QSC",
+      type: "Lorem ipsum",
+      date: "01.04.2023",
+      subject: "Lorem ipsum",
+      payment: "Lorem ipsum",
       status: "Ləğv edildi",
+      startdate: "01.04.2023",
+      enddate: "01.04.2023",
+      edit: "Lorem ipsum",
     },
     {
       key: 6,
       number: 6000,
+      company: "AT-Geotech MMC",
+      counterparty: "Resource Planing QSC",
+      type: "Lorem ipsum",
+      date: "01.04.2023",
+      subject: "Lorem ipsum",
+      payment: "Lorem ipsum",
       status: "Ləğv edildi",
+      startdate: "01.04.2023",
+      enddate: "01.04.2023",
+      edit: "Lorem ipsum",
     },
     {
       key: 7,
       number: 7000,
+      company: "AT-Geotech MMC",
+      counterparty: "Resource Planing QSC",
+      type: "Lorem ipsum",
+      date: "01.04.2023",
+      subject: "Lorem ipsum",
+      payment: "Lorem ipsum",
       status: "Gözləmədə",
+      startdate: "01.04.2023",
+      enddate: "01.04.2023",
+      edit: "Lorem ipsum",
     },
     {
       key: 8,
       number: 8000,
+      company: "AT-Geotech MMC",
+      counterparty: "Resource Planing QSC",
+      type: "Lorem ipsum",
+      date: "01.04.2023",
+      subject: "Lorem ipsum",
+      payment: "Lorem ipsum",
       status: "Gözləmədə",
+      startdate: "01.04.2023",
+      enddate: "01.04.2023",
+      edit: "Lorem ipsum",
     },
   ]);
 
@@ -126,7 +244,7 @@ export default function Table() {
         closable={true} // set closable prop
         onClose={onDrawerClose} // pass onClose handler
         visible={drawerVisible} // pass visible prop
-        width={800} // set width prop
+        width={900} // set width prop
       >
         {selectedRow && ( // render selected row data if any
           <div>
@@ -170,32 +288,34 @@ export default function Table() {
               }}
             >
               <p>
-                <Text type="secondary">Təşkilat:</Text> {selectedRow.number}
+                <Text type="secondary">Təşkilat:</Text> {selectedRow.company}
               </p>
               <p>
-                <Text type="secondary">Kontragent:</Text> {selectedRow.number}
+                <Text type="secondary">Kontragent:</Text>{" "}
+                {selectedRow.counterparty}
               </p>
               <p>
-                <Text type="secondary">Növ:</Text> {selectedRow.number}
+                <Text type="secondary">Növ:</Text> {selectedRow.type}
               </p>
               <p>
                 <Text type="secondary">Nömrə:</Text> {selectedRow.number}
               </p>
               <p>
-                <Text type="secondary">Tarix:</Text> {selectedRow.number}
+                <Text type="secondary">Tarix:</Text> {selectedRow.date}
               </p>
               <p>
-                <Text type="secondary">Predmet:</Text> {selectedRow.number}
+                <Text type="secondary">Predmet:</Text> {selectedRow.subject}
               </p>
               <p>
-                <Text type="secondary">Ödəniş növü:</Text> {selectedRow.number}
+                <Text type="secondary">Ödəniş növü:</Text> {selectedRow.payment}
               </p>
               <p>
                 <Text type="secondary">Başlama tarixi:</Text>{" "}
-                {selectedRow.number}
+                {selectedRow.startdate}
               </p>
               <p>
-                <Text type="secondary">Bitmə tarixi:</Text> {selectedRow.number}
+                <Text type="secondary">Bitmə tarixi:</Text>{" "}
+                {selectedRow.enddate}
               </p>
             </Space>
             <ContractTabs />
