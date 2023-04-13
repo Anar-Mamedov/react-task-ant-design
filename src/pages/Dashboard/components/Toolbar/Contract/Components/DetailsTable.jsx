@@ -1,20 +1,5 @@
-import { Table as AntdTable, Tag } from "antd";
+import { Table as AntdTable } from "antd";
 import { useState } from "react";
-
-const getColor = (status) => {
-  switch (status) {
-    case "Qaralama":
-      return "grey";
-    case "Təsdiqləndi":
-      return "green";
-    case "Ləğv edildi":
-      return "red";
-    case "Gözləmədə":
-      return "orange";
-    default:
-      return "grey";
-  }
-};
 
 const columns = [
   {
@@ -24,15 +9,29 @@ const columns = [
     width: 70,
   },
   {
-    title: "Nömrə",
-    dataIndex: "number",
-    sorter: (a, b) => a.number - b.number,
+    title: "Məhsul",
+    dataIndex: "product",
+    sorter: (a, b) => a.product.localeCompare(b.product),
   },
   {
-    title: "Status",
-    dataIndex: "status",
-    sorter: (a, b) => a.status.localeCompare(b.status),
-    render: (_, { status }) => <Tag color={getColor(status)}>{status}</Tag>,
+    title: "Ölçü vahidi",
+    dataIndex: "measure",
+    sorter: (a, b) => a.measure.localeCompare(b.measure),
+  },
+  {
+    title: "Miqdar",
+    dataIndex: "quantity",
+    sorter: (a, b) => a.quantity - b.quantity,
+  },
+  {
+    title: "Qiymət",
+    dataIndex: "price",
+    sorter: (a, b) => a.price - b.price,
+  },
+  {
+    title: "ƏDV (%)",
+    dataIndex: "tax",
+    sorter: (a, b) => a.tax - b.tax,
   },
 ];
 
@@ -40,18 +39,27 @@ export default function DetailsTable() {
   const [data] = useState([
     {
       key: 1,
-      number: 1000,
-      status: "Qaralama",
+      product: "Kağız",
+      measure: "Paçka",
+      quantity: 5,
+      price: 100,
+      tax: 18,
     },
     {
       key: 2,
-      number: 2000,
-      status: "Qaralama",
+      product: "Qələm",
+      measure: "Ədəd",
+      quantity: 10,
+      price: 200,
+      tax: 14,
     },
     {
       key: 3,
-      number: 3000,
-      status: "Təsdiqləndi",
+      product: "Monitor",
+      measure: "Ədəd",
+      quantity: 2,
+      price: 50,
+      tax: 18,
     },
   ]);
 

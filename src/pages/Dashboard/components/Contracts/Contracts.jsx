@@ -14,10 +14,11 @@ export default function Contracts() {
   return (
     <Content
       style={{
-        margin: "24px 16px 0",
+        margin: "0px 16px 0",
         overflow: "initial",
       }}
     >
+      <Breadcumb />
       <div
         style={{
           padding: 24,
@@ -25,7 +26,6 @@ export default function Contracts() {
           background: colorBgContainer,
         }}
       >
-        <Breadcumb />
         <ToolBar />
         <Table />
         {/* <p>long content</p>
