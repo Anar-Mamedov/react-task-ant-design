@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Layout,
-  theme,
-  Button,
-  Divider,
-  Select,
-  Avatar,
-  Badge,
-  Typography,
-  Input,
-} from "antd";
+import { Layout, theme, Button, Divider, Select, Badge, Input } from "antd";
 import {
   CalendarOutlined,
   CheckSquareOutlined,
@@ -18,12 +8,10 @@ import {
   WechatOutlined,
   BellOutlined,
   ShoppingCartOutlined,
-  UserOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
 import styled from "styled-components";
-
-const { Text } = Typography;
+import CustomAvatar from "./Avatar";
 
 const handleChange = (value) => {
   console.log(`selected ${value}`);
@@ -277,7 +265,8 @@ export default function Header() {
             <BellOutlined style={{ fontSize: "24px" }} />
           </Badge>
         </Button>
-        <div
+        <CustomAvatar />
+        {/* <div
           style={{
             display: "flex",
             alignItems: "center",
@@ -304,7 +293,7 @@ export default function Header() {
             <span style={{ fontSize: "8px", lineHeight: "15px" }}>Admin</span>
           </div>
           <Avatar size="smal" icon={<UserOutlined />} />
-        </div>
+        </div> */}
       </div>
     </Layout.Header>
   );
