@@ -1,10 +1,9 @@
-import { Table as AntdTable, Tag, Drawer, Typography, Space } from "antd";
+import { Table as AntdTable, Tag } from "antd";
 import { useState } from "react";
-import ContractTabs from "../../../Toolbar/Contract/Components/ContractTabs";
+import ContractDrawer from "./components/ContractDrawer";
+import { FormOutlined } from "@ant-design/icons";
 
-const { Text } = Typography;
-
-const getColor = (status) => {
+export const getColor = (status) => {
   switch (status) {
     case "Qaralama":
       return "grey";
@@ -30,6 +29,20 @@ const columns = [
     title: "NÖMRƏ",
     dataIndex: "number",
     sorter: (a, b) => a.number - b.number,
+    filterMode: "tree",
+    filterSearch: true,
+    onFilter: ([min, max], record) =>
+      record.number >= min && record.number <= max,
+    filters: [
+      {
+        text: "1-1000",
+        value: [1, 1000],
+      },
+      {
+        text: "1001-2000",
+        value: [1001, 2000],
+      },
+    ],
   },
   {
     title: "TƏŞKİLAT",
@@ -99,7 +112,7 @@ export default function Table() {
       status: "Qaralama",
       startdate: "01.04.2023",
       enddate: "01.04.2023",
-      edit: "Lorem ipsum",
+      edit: <FormOutlined />,
     },
     {
       key: 2,
@@ -113,7 +126,7 @@ export default function Table() {
       status: "Qaralama",
       startdate: "01.04.2023",
       enddate: "01.04.2023",
-      edit: "Lorem ipsum",
+      edit: <FormOutlined />,
     },
     {
       key: 3,
@@ -127,7 +140,7 @@ export default function Table() {
       status: "Təsdiqləndi",
       startdate: "01.04.2023",
       enddate: "01.04.2023",
-      edit: "Lorem ipsum",
+      edit: <FormOutlined />,
     },
     {
       key: 4,
@@ -141,7 +154,7 @@ export default function Table() {
       status: "Təsdiqləndi",
       startdate: "01.04.2023",
       enddate: "01.04.2023",
-      edit: "Lorem ipsum",
+      edit: <FormOutlined />,
     },
     {
       key: 5,
@@ -155,7 +168,7 @@ export default function Table() {
       status: "Ləğv edildi",
       startdate: "01.04.2023",
       enddate: "01.04.2023",
-      edit: "Lorem ipsum",
+      edit: <FormOutlined />,
     },
     {
       key: 6,
@@ -169,7 +182,7 @@ export default function Table() {
       status: "Ləğv edildi",
       startdate: "01.04.2023",
       enddate: "01.04.2023",
-      edit: "Lorem ipsum",
+      edit: <FormOutlined />,
     },
     {
       key: 7,
@@ -183,7 +196,7 @@ export default function Table() {
       status: "Gözləmədə",
       startdate: "01.04.2023",
       enddate: "01.04.2023",
-      edit: "Lorem ipsum",
+      edit: <FormOutlined />,
     },
     {
       key: 8,
@@ -197,7 +210,7 @@ export default function Table() {
       status: "Gözləmədə",
       startdate: "01.04.2023",
       enddate: "01.04.2023",
-      edit: "Lorem ipsum",
+      edit: <FormOutlined />,
     },
   ]);
 
@@ -238,90 +251,11 @@ export default function Table() {
           onClick: () => onRowClick(record), // call onRowClick handler with record
         })}
       />
-      <Drawer // render Drawer component
-        title="Müqavilə" // set title prop
-        placement="right" // set placement prop
-        closable={true} // set closable prop
-        onClose={onDrawerClose} // pass onClose handler
-        visible={drawerVisible} // pass visible prop
-        width={900} // set width prop
-      >
-        {selectedRow && ( // render selected row data if any
-          <div>
-            <Space
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <Text type="success">Əsas məlumatlar:</Text>
-              <p>
-                <Text type="secondary">Status:</Text>{" "}
-                <span
-                  style={{
-                    backgroundColor: `rgba(${
-                      getColor(selectedRow.status) === "grey"
-                        ? "128,128,128"
-                        : getColor(selectedRow.status) === "green"
-                        ? "0,128,0"
-                        : getColor(selectedRow.status) === "red"
-                        ? "255,0,0"
-                        : getColor(selectedRow.status) === "orange"
-                        ? "255,165,0"
-                        : "128,128,128"
-                    }, 0.5)`,
-                    padding: "5px 10px",
-                    borderRadius: "20px",
-                  }}
-                >
-                  {selectedRow.status}{" "}
-                </span>
-              </p>
-            </Space>
-            <Space
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                rowGap: "0px",
-                columnGap: "25px",
-                marginBottom: "20px",
-              }}
-            >
-              <p>
-                <Text type="secondary">Təşkilat:</Text> {selectedRow.company}
-              </p>
-              <p>
-                <Text type="secondary">Kontragent:</Text>{" "}
-                {selectedRow.counterparty}
-              </p>
-              <p>
-                <Text type="secondary">Növ:</Text> {selectedRow.type}
-              </p>
-              <p>
-                <Text type="secondary">Nömrə:</Text> {selectedRow.number}
-              </p>
-              <p>
-                <Text type="secondary">Tarix:</Text> {selectedRow.date}
-              </p>
-              <p>
-                <Text type="secondary">Predmet:</Text> {selectedRow.subject}
-              </p>
-              <p>
-                <Text type="secondary">Ödəniş növü:</Text> {selectedRow.payment}
-              </p>
-              <p>
-                <Text type="secondary">Başlama tarixi:</Text>{" "}
-                {selectedRow.startdate}
-              </p>
-              <p>
-                <Text type="secondary">Bitmə tarixi:</Text>{" "}
-                {selectedRow.enddate}
-              </p>
-            </Space>
-            <ContractTabs />
-          </div>
-        )}
-      </Drawer>
+      <ContractDrawer
+        selectedRow={selectedRow}
+        onDrawerClose={onDrawerClose}
+        drawerVisible={drawerVisible}
+      />
     </>
   );
 }

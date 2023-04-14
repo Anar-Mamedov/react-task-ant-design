@@ -1,4 +1,4 @@
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import {
   Space,
   Select,
@@ -65,6 +65,18 @@ const onChangeData = (date, dateString) => {
 // datapicker end
 
 export default function MainInformation() {
+  // Increasing the number of inputs in the tab
+  const [financeFormCount, setFinanceFormCount] = React.useState(1);
+
+  const addFinanceForm = () => {
+    setFinanceFormCount((state) => state + 1);
+  };
+
+  const removeFinanceForm = () => {
+    setFinanceFormCount((state) => state - 1);
+  };
+  // Increasing the number of inputs in the tab end
+
   return (
     <Space
       style={{
@@ -421,220 +433,237 @@ export default function MainInformation() {
         <div>
           <StyledTabs>
             <TabPane tab="Maliyyə detalları" key="1">
-              <div
-                style={{
-                  display: "flex",
-                  flexFlow: "row wrap",
-                  gap: "15px",
-                }}
-              >
+              {[...Array(financeFormCount)].map((el, idx) => (
                 <div
+                  key={idx}
                   style={{
                     display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
+                    flexFlow: "row wrap",
+                    gap: "15px",
                   }}
                 >
-                  <span>Məbləğ:</span>
-                  <InputNumber
-                    placeholder="Daxil edin"
-                    type="number"
-                    style={{
-                      width: 160,
-                      marginTop: "0.5rem",
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <span
+                  <div
                     style={{
                       display: "flex",
-                      gap: "6.9rem",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
                     }}
                   >
-                    ƏDV: <Checkbox onChangeCheckbox={onChangeCheckbox} />
-                  </span>
-                  <Space style={{ marginTop: "0.5rem" }}>
-                    <Space.Compact>
-                      <Select
-                        showSearch
-                        style={{
-                          width: 80,
-                        }}
-                        placeholder="Seçim edin"
-                        optionFilterProp="children"
-                        onChange={onChange}
-                        onSearch={onSearch}
-                        filterOption={(input, option) =>
-                          (option?.label ?? "")
-                            .toLowerCase()
-                            .includes(input.toLowerCase())
-                        }
-                        options={[
-                          {
-                            value: "AZN",
-                            label: "AZN",
-                          },
-                          {
-                            value: "USD",
-                            label: "USD",
-                          },
-                          {
-                            value: "EUR",
-                            label: "EUR",
-                          },
-                        ]}
-                      />
-                      <Input defaultValue="" style={{ width: 80 }} />
-                    </Space.Compact>
-                  </Space>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <span>Bank zəmanət məbləği:</span>
-                  <InputNumber
-                    type="number"
+                    <span>Məbləğ:</span>
+                    <InputNumber
+                      placeholder="Daxil edin"
+                      type="number"
+                      style={{
+                        width: 160,
+                        marginTop: "0.5rem",
+                      }}
+                    />
+                  </div>
+                  <div
                     style={{
-                      width: 160,
-                      marginTop: "0.5rem",
-                    }}
-                    placeholder="Daxil edin"
-                  />
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <span>Bank zəmanət məbləği:</span>
-                  <Select
-                    required
-                    showSearch
-                    style={{
-                      width: 160,
-                      marginTop: "0.5rem",
-                    }}
-                    placeholder="Seçim edin"
-                    optionFilterProp="children"
-                    onChange={onChange}
-                    onSearch={onSearch}
-                    filterOption={(input, option) =>
-                      (option?.label ?? "")
-                        .toLowerCase()
-                        .includes(input.toLowerCase())
-                    }
-                    options={[
-                      {
-                        value: "jack",
-                        label: "Jack",
-                      },
-                      {
-                        value: "lucy",
-                        label: "Lucy",
-                      },
-                      {
-                        value: "tom",
-                        label: "Tom",
-                      },
-                    ]}
-                  />
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <span>Bank zəmanət tarixi:</span>
-                  <Space
-                    direction="vertical"
-                    style={{
-                      marginTop: "0.5rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
                     }}
                   >
-                    <DatePicker
+                    <span
+                      style={{
+                        display: "flex",
+                        gap: "6.9rem",
+                      }}
+                    >
+                      ƏDV: <Checkbox onChangeCheckbox={onChangeCheckbox} />
+                    </span>
+                    <Space style={{ marginTop: "0.5rem" }}>
+                      <Space.Compact>
+                        <Select
+                          showSearch
+                          style={{
+                            width: 80,
+                          }}
+                          placeholder="Seçim edin"
+                          optionFilterProp="children"
+                          onChange={onChange}
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                            (option?.label ?? "")
+                              .toLowerCase()
+                              .includes(input.toLowerCase())
+                          }
+                          options={[
+                            {
+                              value: "AZN",
+                              label: "AZN",
+                            },
+                            {
+                              value: "USD",
+                              label: "USD",
+                            },
+                            {
+                              value: "EUR",
+                              label: "EUR",
+                            },
+                          ]}
+                        />
+                        <Input defaultValue="" style={{ width: 80 }} />
+                      </Space.Compact>
+                    </Space>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <span>Bank zəmanət məbləği:</span>
+                    <InputNumber
+                      type="number"
+                      style={{
+                        width: 160,
+                        marginTop: "0.5rem",
+                      }}
+                      placeholder="Daxil edin"
+                    />
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <span>Bank zəmanət məbləği:</span>
+                    <Select
                       required
-                      onChangeData={onChangeData}
-                      placeholder="Tarix seç"
-                      style={{ width: 160 }}
+                      showSearch
+                      style={{
+                        width: 160,
+                        marginTop: "0.5rem",
+                      }}
+                      placeholder="Seçim edin"
+                      optionFilterProp="children"
+                      onChange={onChange}
+                      onSearch={onSearch}
+                      filterOption={(input, option) =>
+                        (option?.label ?? "")
+                          .toLowerCase()
+                          .includes(input.toLowerCase())
+                      }
+                      options={[
+                        {
+                          value: "jack",
+                          label: "Jack",
+                        },
+                        {
+                          value: "lucy",
+                          label: "Lucy",
+                        },
+                        {
+                          value: "tom",
+                          label: "Tom",
+                        },
+                      ]}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <span>Bank zəmanət tarixi:</span>
+                    <Space
+                      direction="vertical"
+                      style={{
+                        marginTop: "0.5rem",
+                      }}
+                    >
+                      <DatePicker
+                        required
+                        onChangeData={onChangeData}
+                        placeholder="Tarix seç"
+                        style={{ width: 160 }}
+                      />
+                    </Space>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <span>Bank zəmanət müddəti:</span>
+                    <Space style={{ marginTop: "0.5rem" }}>
+                      <Space.Compact>
+                        <Select
+                          showSearch
+                          style={{
+                            width: 80,
+                          }}
+                          placeholder="Seçim edin"
+                          optionFilterProp="children"
+                          onChange={onChange}
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                            (option?.label ?? "")
+                              .toLowerCase()
+                              .includes(input.toLowerCase())
+                          }
+                          options={[
+                            {
+                              value: "AZN",
+                              label: "AZN",
+                            },
+                            {
+                              value: "USD",
+                              label: "USD",
+                            },
+                            {
+                              value: "EUR",
+                              label: "EUR",
+                            },
+                          ]}
+                        />
+                        <Input defaultValue="" style={{ width: 80 }} />
+                      </Space.Compact>
+                    </Space>
+                  </div>
+                  <Space
+                    wrap
+                    style={{
+                      marginTop: "1.9rem",
+                    }}
+                  >
+                    <Button
+                      onClick={
+                        idx + 1 === financeFormCount
+                          ? addFinanceForm
+                          : removeFinanceForm
+                      }
+                      type="primary"
+                      icon={
+                        idx + 1 === financeFormCount ? (
+                          <PlusOutlined style={{ color: "#d9d9d9" }} />
+                        ) : (
+                          <MinusOutlined
+                            style={{ color: "red", borderColor: "red" }}
+                          />
+                        )
+                      }
+                      style={{
+                        background: "#fff",
+                        color: "#d9d9d9",
+                        borderColor:
+                          idx + 1 === financeFormCount ? "#d9d9d9" : "red",
+                      }}
+                      size={"20px"}
                     />
                   </Space>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <span>Bank zəmanət müddəti:</span>
-                  <Space style={{ marginTop: "0.5rem" }}>
-                    <Space.Compact>
-                      <Select
-                        showSearch
-                        style={{
-                          width: 80,
-                        }}
-                        placeholder="Seçim edin"
-                        optionFilterProp="children"
-                        onChange={onChange}
-                        onSearch={onSearch}
-                        filterOption={(input, option) =>
-                          (option?.label ?? "")
-                            .toLowerCase()
-                            .includes(input.toLowerCase())
-                        }
-                        options={[
-                          {
-                            value: "AZN",
-                            label: "AZN",
-                          },
-                          {
-                            value: "USD",
-                            label: "USD",
-                          },
-                          {
-                            value: "EUR",
-                            label: "EUR",
-                          },
-                        ]}
-                      />
-                      <Input defaultValue="" style={{ width: 80 }} />
-                    </Space.Compact>
-                  </Space>
-                </div>
-                <Space
-                  wrap
-                  style={{
-                    marginTop: "1.9rem",
-                  }}
-                >
-                  <Button
-                    type="primary"
-                    icon={<PlusOutlined style={{ color: "#d9d9d9" }} />}
-                    style={{
-                      background: "#fff",
-                      color: "#d9d9d9",
-                      borderColor: "#d9d9d9",
-                    }}
-                    size={"20px"}
-                  />
-                </Space>
-              </div>
+              ))}
             </TabPane>
             <TabPane tab="Rekvizit" key="2">
               <div
