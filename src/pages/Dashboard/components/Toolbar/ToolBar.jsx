@@ -1,6 +1,5 @@
 import React from "react";
-import ActiveButton from "./Buttons/ActiveButton";
-import DeactiveButton from "./Buttons/DeactiveButton";
+import RadioButton from "./Buttons/RadioButton";
 import PrintButton from "./Buttons/PrintButton";
 import ExcellButton from "./Buttons/ExcellButton";
 import AddNewButton from "./Buttons/AddNewButton";
@@ -18,8 +17,7 @@ export default function ToolBar() {
         margin: "10px 0px 20px 0px",
       }}
     >
-      <ActiveButton />
-      <DeactiveButton />
+      <RadioButton />
       <ResetFilters />
       <PrintButton />
       <ExcellButton />
