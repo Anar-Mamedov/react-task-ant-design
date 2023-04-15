@@ -2,7 +2,9 @@ import { Drawer, Typography, Space, Button } from "antd";
 import styled from "styled-components";
 import ContractTabs from "../../../../Toolbar/Contract/Components/ContractTabs";
 import { getColor } from "../Table";
+import { useState } from "react";
 import { EnterOutlined, FormOutlined } from "@ant-design/icons";
+import MainInformation from "../../../../Toolbar/Components/MainInformation";
 
 const { Text } = Typography;
 
@@ -20,6 +22,15 @@ export default function ContractDrawer({
   drawerVisible,
   selectedRow,
 }) {
+  const [visible, setVisible] = useState(false);
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const onClose = () => {
+    setVisible(false);
+  };
   return (
     <StyledDrawer // render Drawer component
       title="Müqavilə" // set title prop
@@ -138,10 +149,44 @@ export default function ContractDrawer({
                 borderColor: "#2bc770",
                 color: "#ffffff",
               }}
+              onClick={showDrawer}
             >
               Düzəliş et
               <FormOutlined />
             </Button>
+            <Drawer
+              title="Düzəliş et"
+              placement="right"
+              closable={false}
+              onClose={onClose}
+              visible={visible}
+              width={950}
+              extra={
+                <Space
+                  style={{
+                    position: "absolute",
+                    right: 20,
+                    bottom: 20,
+                  }}
+                >
+                  <Button
+                    type="primary"
+                    onClick={onClose}
+                    style={{ backgroundColor: "#2bc770" }}
+                  >
+                    Yadda saxla
+                  </Button>
+                  <Button
+                    onClick={onClose}
+                    style={{ color: "#2bc770", borderColor: "#2bc770" }}
+                  >
+                    Ləğv et
+                  </Button>
+                </Space>
+              }
+            >
+              <MainInformation />
+            </Drawer>
           </div>
         </div>
       )}
